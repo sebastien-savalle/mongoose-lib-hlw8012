@@ -11,13 +11,14 @@ void mgos_hlw8012_close(HLW8012 *sensor) {
   }
 }
 
-void mgos_hlw8012_begin(
+bool mgos_hlw8012_begin(
     HLW8012 *sensor,
     unsigned char cf_pin,
     unsigned char cf1_pin,
     unsigned char sel_pin) {
-    if (sensor == nullptr) return;
+    if (sensor == nullptr) return false;
     sensor->begin(cf_pin, cf1_pin, sel_pin);
+    return true;
 }
 double mgos_hlw8012_readCurrent(HLW8012 *sensor)
 {
