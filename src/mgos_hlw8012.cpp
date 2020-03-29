@@ -35,3 +35,28 @@ unsigned int mgos_hlw8012_readEnergy(HLW8012 *sensor)
 	if (sensor == nullptr) return 0;
     return sensor -> getEnergy();
 }
+unsigned int mgos_hlw8012_readActivePower(HLW8012 *sensor)
+{
+	if (sensor == nullptr) return 0;
+    return sensor -> getActivePower();
+}
+unsigned int mgos_hlw8012_readApparentPower(HLW8012 *sensor)
+{
+	if (sensor == nullptr) return 0;
+    return sensor -> getApparentPower();
+}
+double mgos_hlw8012_readPowerFactor(HLW8012 *sensor)
+{
+	if (sensor == nullptr) return 0;
+    return sensor -> getPowerFactor();
+}
+unsigned int mgos_hlw8012_readReactivePower(HLW8012 *sensor)
+{
+	if (sensor == nullptr) return 0;
+    return sensor -> getReactivePower();
+}
+void mgos_hlw8012_resetEnergy(HLW8012 *sensor)
+{
+	if (sensor == nullptr) return;
+    sensor -> resetEnergy();
+}

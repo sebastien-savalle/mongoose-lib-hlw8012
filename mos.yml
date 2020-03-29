@@ -1,4 +1,4 @@
-author: ellavas
+author: Sebastien Savalle <sebastien.savalle@gmail.com>
 type: lib
 description: A Mongoose OS library to use arduino hlw8012 sensor.
 version: 1.0
@@ -6,6 +6,8 @@ platform: esp8266
 
 sources:
   - src
+includes:
+  - include
 filesystem:
   - fs
 config_schema:
