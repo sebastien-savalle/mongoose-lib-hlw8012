@@ -9,7 +9,13 @@ HLW8012 *mgos_hlw8012_create();
 
 void mgos_hlw8012_close(HLW8012 *sensor);
 
-bool mgos_hlw8012_begin(HLW8012 *sensor, unsigned char cf_pin, unsigned char cf1_pin, unsigned char sel_pin);
+bool mgos_hlw8012_begin(HLW8012 *sensor, 
+            unsigned char cf_pin, 
+            unsigned char cf1_pin, 
+            unsigned char sel_pin,
+            unsigned char currentWhen = HIGH,
+            bool use_interrupts = true,
+            unsigned long pulse_timeout = PULSE_TIMEOUT);
 
 double mgos_hlw8012_readCurrent(HLW8012 *sensor);
 

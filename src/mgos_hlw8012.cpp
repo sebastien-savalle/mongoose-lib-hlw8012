@@ -15,9 +15,12 @@ bool mgos_hlw8012_begin(
     HLW8012 *sensor,
     unsigned char cf_pin,
     unsigned char cf1_pin,
-    unsigned char sel_pin) {
+    unsigned char sel_pin,
+    unsigned char currentWhen,
+    bool use_interrupts,
+    unsigned long pulse_timeout) {
     if (sensor == nullptr) return false;
-    sensor->begin(cf_pin, cf1_pin, sel_pin);
+    sensor->begin(cf_pin, cf1_pin, sel_pin, currentWhen, use_interrupts, pulse_timeout);
     return true;
 }
 double mgos_hlw8012_readCurrent(HLW8012 *sensor)
