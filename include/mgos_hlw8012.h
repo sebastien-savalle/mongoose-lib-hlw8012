@@ -33,6 +33,12 @@ unsigned int mgos_hlw8012_readReactivePower(HLW8012 *sensor);
 
 void mgos_hlw8012_resetEnergy(HLW8012 *sensor);
 
+void setCurrentMultiplier(HLW8012 *sensor, double current_multiplier);
+    
+void setVoltageMultiplier(HLW8012 *sensor, double voltage_multiplier);
+    
+void setPowerMultiplier(HLW8012 *sensor, double power_multiplier);
+
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */

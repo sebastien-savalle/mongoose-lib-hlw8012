@@ -63,3 +63,18 @@ void mgos_hlw8012_resetEnergy(HLW8012 *sensor)
 	if (sensor == nullptr) return;
     sensor -> resetEnergy();
 }
+void mgos_hlw8012_setCurrentMultiplier(HLW8012 *sensor, double current_multiplier)
+{
+	if (sensor == nullptr) return;
+    sensor -> setCurrentMultiplier(current_multiplier);
+}
+void mgos_hlw8012_setVoltageMultiplier(HLW8012 *sensor, double voltage_multiplier)
+{
+	if (sensor == nullptr) return;
+    sensor -> setVoltageMultiplier(voltage_multiplier);
+}
+void mgos_hlw8012_setPowerMultiplier(HLW8012 *sensor, double power_multiplier)
+{
+	if (sensor == nullptr) return;
+    sensor -> setPowerMultiplier(power_multiplier);
+}
