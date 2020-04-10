@@ -11,7 +11,7 @@ let HLW8012 = {
     _readActivePower: ffi('void mgos_hlw8012_readActivePower(void *)'),
     _readApparentPower: ffi('int mgos_hlw8012_readApparentPower(void *)'),
     _readPowerFactor: ffi('void mgos_hlw8012_readPowerFactor(void *)'),
-    _readReactiveFactor: ffi('void mgos_hlw8012_readReactiveFactor(void *)'),
+    _readReactivePower: ffi('void mgos_hlw8012_readReactivePower(void *)'),
     _readResetEnergy: ffi('void mgos_hlw8012_resetEnergy(void *)'),
 
     create: function () {
@@ -45,8 +45,8 @@ let HLW8012 = {
         readPowerFactor: function () {
             return HLW8012._readPowerFactor(this.instance);
         },
-        readReactiveFactor: function () {
-            return HLW8012._readReactiveFactor(this.instance);
+        readReactivePower: function () {
+            return HLW8012._readReactivePower(this.instance);
         },
         readResetEnergy: function () {
             return HLW8012._readResetEnergy(this.instance);

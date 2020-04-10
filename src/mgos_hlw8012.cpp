@@ -21,6 +21,7 @@ bool mgos_hlw8012_begin(
     unsigned long pulse_timeout) {
     if (sensor == nullptr) return false;
     sensor->begin(cf_pin, cf1_pin, sel_pin, currentWhen, use_interrupts, pulse_timeout);
+    sensor->setResistors(0.001, 5 * 470000, 1000);
     return true;
 }
 double mgos_hlw8012_readCurrent(HLW8012 *sensor)
