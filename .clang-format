@@ -1,0 +1,12 @@
+BasedOnStyle: Google
+AlignAfterOpenBracket: Align
+AllowAllParametersOfDeclarationOnNextLine: false
+AllowShortFunctionsOnASingleLine: false
+BinPackArguments: false
+BinPackParameters: false
+BreakStringLiterals: false
+ColumnLimit: 120
+DerivePointerBinding: false
+IncludeBlocks: Preserve
+PointerBindsToType: false
+SpaceAfterCStyleCast: true

@@ -39,6 +39,8 @@ void mgos_hlw8012_setVoltageMultiplier(HLW8012 *sensor, double voltage_multiplie
     
 void mgos_hlw8012_setPowerMultiplier(HLW8012 *sensor, double power_multiplier);
 
+void mgos_hlw8012_setResistors(HLW8012 *sensor, double current, double voltage_upstream, double voltage_downstream);
+
 #ifdef __cplusplus
 }
 #endif  /* __cplusplus */
