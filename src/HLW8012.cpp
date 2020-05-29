@@ -54,7 +54,7 @@ void HLW8012::setMode(hlw8012_mode_t mode) {
     _mode = (mode == MODE_CURRENT) ? _current_mode : 1 - _current_mode;
     digitalWrite(_sel_pin, _mode);
     if (_use_interrupts) {
-        _last_cf1_interrupt = _first_cf1_interrupt = micros();
+        _last_cf1_interrupt = _first_cf1_interrupt = millis();
     }
 }
 
@@ -178,10 +178,7 @@ void HLW8012::setResistors(double current, double voltage_upstream, double volta
 }
 
 void ICACHE_RAM_ATTR HLW8012::cf_interrupt() {
-    unsigned long now = micros();
-    if (_last_cf_interrupt > now) {
-        _last_cf_interrupt = 0;
-    }
+    unsigned long now = millis();
     _power_pulse_width = now - _last_cf_interrupt;
     _last_cf_interrupt = now;
     _pulse_count++;
@@ -189,7 +186,7 @@ void ICACHE_RAM_ATTR HLW8012::cf_interrupt() {
 
 void ICACHE_RAM_ATTR HLW8012::cf1_interrupt() {
 
-    unsigned long now = micros();
+    unsigned long now = millis();
     unsigned long pulse_width;
 
     if ((now - _first_cf1_interrupt) > _pulse_timeout) {
@@ -217,12 +214,11 @@ void ICACHE_RAM_ATTR HLW8012::cf1_interrupt() {
 }
 
 void HLW8012::_checkCFSignal() {
-    if (micros() > _last_cf_interrupt) _last_cf_interrupt = 0;
-    if ((micros() - _last_cf_interrupt) > _pulse_timeout) _power_pulse_width = 0;
+    if ((millis() - _last_cf_interrupt) > _pulse_timeout) _power_pulse_width = 0;
 }
 
 void HLW8012::_checkCF1Signal() {
-    if ((micros() - _last_cf1_interrupt) > _pulse_timeout) {
+    if ((millis() - _last_cf1_interrupt) > _pulse_timeout) {
         if (_mode == _current_mode) {
             _current_pulse_width = 0;
         } else {
