@@ -38,13 +38,19 @@ bool mgos_hlw8012_begin(HLW8012 *sensor,
   if (sensor == nullptr) return false;
   sensor->begin(cf_pin, cf1_pin, sel_pin, currentWhen, use_interrupts, pulse_timeout);
 
-  mgos_gpio_setup_input(cf_pin, MGOS_GPIO_PULL_UP);
-  mgos_gpio_setup_input(cf1_pin, MGOS_GPIO_PULL_UP);
-  mgos_gpio_set_mode(sel_pin, MGOS_GPIO_MODE_OUTPUT);
-  mgos_gpio_set_int_handler(cf_pin, MGOS_GPIO_INT_EDGE_NEG, handleCfInterrupt, sensor);
-  mgos_gpio_set_int_handler(cf1_pin, MGOS_GPIO_INT_EDGE_NEG, handleCf1Interrupt, sensor);
-  mgos_gpio_enable_int(cf_pin);
-  mgos_gpio_enable_int(cf1_pin);
+  if (cf_pin >= 0) {
+    mgos_gpio_setup_input(cf_pin, MGOS_GPIO_PULL_UP);
+    mgos_gpio_set_int_handler(cf_pin, MGOS_GPIO_INT_EDGE_NEG, handleCfInterrupt, sensor);
+    mgos_gpio_enable_int(cf_pin);
+  }
+  if (cf1_pin >= 0) {
+    mgos_gpio_setup_input(cf1_pin, MGOS_GPIO_PULL_UP);
+    mgos_gpio_set_int_handler(cf1_pin, MGOS_GPIO_INT_EDGE_NEG, handleCf1Interrupt, sensor);
+    mgos_gpio_enable_int(cf1_pin);
+  }
+  if (sel_pin >= 0) {
+    mgos_gpio_set_mode(sel_pin, MGOS_GPIO_MODE_OUTPUT);
+  }
   return true;
 }
 double mgos_hlw8012_readCurrent(HLW8012 *sensor) {

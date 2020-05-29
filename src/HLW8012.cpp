@@ -179,6 +179,9 @@ void HLW8012::setResistors(double current, double voltage_upstream, double volta
 
 void ICACHE_RAM_ATTR HLW8012::cf_interrupt() {
     unsigned long now = micros();
+    if (_last_cf_interrupt > now) {
+        _last_cf_interrupt = 0;
+    }
     _power_pulse_width = now - _last_cf_interrupt;
     _last_cf_interrupt = now;
     _pulse_count++;
@@ -214,6 +217,7 @@ void ICACHE_RAM_ATTR HLW8012::cf1_interrupt() {
 }
 
 void HLW8012::_checkCFSignal() {
+    if (micros() > _last_cf_interrupt) _last_cf_interrupt = 0;
     if ((micros() - _last_cf_interrupt) > _pulse_timeout) _power_pulse_width = 0;
 }
 
