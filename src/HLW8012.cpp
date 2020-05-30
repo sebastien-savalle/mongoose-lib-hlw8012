@@ -142,7 +142,7 @@ unsigned long HLW8012::getEnergy() {
     f = N/t (N=pulse count, t = time)
     E = P*t = m*N  (E=energy)
     */
-    return _pulse_count * _power_multiplier / 1000000. / 2;
+    return _pulse_count * _power_multiplier / 1000. / 2;
 
 }
 
