@@ -57,7 +57,7 @@ unsigned int mgos_hlw8012_readVoltage(HLW8012 *sensor) {
   if (sensor == nullptr) return 0;
   return sensor->getVoltage();
 }
-unsigned int mgos_hlw8012_readEnergy(HLW8012 *sensor) {
+unsigned long mgos_hlw8012_readEnergy(HLW8012 *sensor) {
   if (sensor == nullptr) return 0;
   return sensor->getEnergy();
 }
